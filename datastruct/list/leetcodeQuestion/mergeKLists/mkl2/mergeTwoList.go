@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/list/node"
-)
-
 /**
 https://leetcode-cn.com/problems/merge-k-sorted-lists
 合并K个有序链表

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-guide/datastruct/binaryTree/traversal/levelorder"
-	. "go-guide/datastruct/binaryTree/treeNode"
+	"holy-algorithm/datastruct/binaryTree/traversal/levelorder"
+	. "holy-algorithm/datastruct/binaryTree/treeNode"
 	"log"
 	"math/rand"
 )

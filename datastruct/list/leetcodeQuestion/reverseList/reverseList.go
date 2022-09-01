@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/list/node"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/reverse-linked-list/
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。

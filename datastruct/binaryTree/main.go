@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-guide/datastruct/binaryTree/traversal"
+	"holy-algorithm/datastruct/binaryTree/traversal"
 )
 
 func main() {

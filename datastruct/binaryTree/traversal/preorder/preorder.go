@@ -1,9 +1,5 @@
 package preorder
 
-import (
-	. "go-guide/datastruct/binaryTree/treeNode"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
 结论：前序遍历类似快速排序的思想，遍历顺序：根->左子树->右子树

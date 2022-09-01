@@ -1,9 +1,5 @@
 package morris
 
-import (
-	. "go-guide/datastruct/binaryTree/treeNode"
-)
-
 /**
 Morris序转化前中后序遍历：
 	前序遍历：1.没有Left，直接打印。2.第一次遍历的结点，直接打印。3.打印的都是cur的值

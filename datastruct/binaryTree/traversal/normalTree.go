@@ -1,12 +1,12 @@
 package traversal
 
 import (
-	"go-guide/datastruct/binaryTree/traversal/inorder"
-	"go-guide/datastruct/binaryTree/traversal/levelorder"
-	"go-guide/datastruct/binaryTree/traversal/morris"
-	"go-guide/datastruct/binaryTree/traversal/postorder"
-	"go-guide/datastruct/binaryTree/traversal/preorder"
-	"go-guide/datastruct/binaryTree/treeNode"
+	"holy-algorithm/datastruct/binaryTree/traversal/inorder"
+	"holy-algorithm/datastruct/binaryTree/traversal/levelorder"
+	"holy-algorithm/datastruct/binaryTree/traversal/morris"
+	"holy-algorithm/datastruct/binaryTree/traversal/postorder"
+	"holy-algorithm/datastruct/binaryTree/traversal/preorder"
+	"holy-algorithm/datastruct/binaryTree/treeNode"
 	"log"
 )
 

@@ -1,7 +1,6 @@
 package main
 
 import (
-	. "go-guide/datastruct/trie/trie"
 	"log"
 )
 

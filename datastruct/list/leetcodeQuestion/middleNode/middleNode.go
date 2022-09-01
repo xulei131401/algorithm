@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "go-guide/datastruct/list/node"
+	. "holy-algorithm/datastruct/list/node"
 )
 
 /**

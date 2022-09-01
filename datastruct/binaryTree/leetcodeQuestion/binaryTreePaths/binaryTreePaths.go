@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-	. "go-guide/datastruct/binaryTree/treeNode"
+	. "holy-algorithm/datastruct/binaryTree/treeNode"
 	"log"
 	"strconv"
 )

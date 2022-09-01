@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-guide/datastruct/redBlackTree/node"
+	"holy-algorithm/datastruct/redBlackTree/node"
 	"log"
 	"math/rand"
 	"time"

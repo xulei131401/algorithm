@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/list"
-	. "go-guide/datastruct/list/node"
 	"log"
 )
 

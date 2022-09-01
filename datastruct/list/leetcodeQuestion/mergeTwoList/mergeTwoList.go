@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/list/node"
-)
-
 /**
 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists/
 合并2个有序链表

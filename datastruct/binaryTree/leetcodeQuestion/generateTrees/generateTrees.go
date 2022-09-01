@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/binaryTree/treeNode"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
 

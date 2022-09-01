@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	. "go-guide/datastruct/list/node"
 )
 
 /**

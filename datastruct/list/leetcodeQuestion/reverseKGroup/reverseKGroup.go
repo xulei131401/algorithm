@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/list/node"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/reverse-nodes-in-k-group/solution/k-ge-yi-zu-fan-zhuan-lian-biao-by-leetcode-solutio/
 

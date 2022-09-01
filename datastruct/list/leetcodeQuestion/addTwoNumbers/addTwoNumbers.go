@@ -1,9 +1,5 @@
 package main
 
-import (
-	. "go-guide/datastruct/list/node"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/add-two-numbers/
 

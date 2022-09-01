@@ -1,7 +1,7 @@
 package levelorder
 
 import (
-	. "go-guide/datastruct/binaryTree/treeNode"
+	. "holy-algorithm/datastruct/binaryTree/treeNode"
 )
 
 /**

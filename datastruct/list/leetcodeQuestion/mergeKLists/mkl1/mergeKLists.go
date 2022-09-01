@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/heap"
-	. "go-guide/datastruct/list/node"
 )
 
 /**

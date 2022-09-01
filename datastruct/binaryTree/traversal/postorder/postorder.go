@@ -1,9 +1,5 @@
 package postorder
 
-import (
-	. "go-guide/datastruct/binaryTree/treeNode"
-)
-
 /**
 题目：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
 结论：后序遍历类似归并排序的思想，遍历顺序：左子树->右子树->根

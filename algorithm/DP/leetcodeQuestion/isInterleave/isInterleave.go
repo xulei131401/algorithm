@@ -4,7 +4,6 @@ import "log"
 
 /**
 题目：https://leetcode-cn.com/problems/interleaving-string/
-
 交错字符串
 
 给定三个字符串s1、s2、s3，请你帮忙验证s3是否是由s1和s2 交错 组成的。

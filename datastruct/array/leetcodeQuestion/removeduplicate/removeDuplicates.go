@@ -1,16 +1,27 @@
-package removeduplicate
+package main
 
 import "fmt"
 
 /*
-	给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+题目：https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
 
-	不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+删除有序数组中的重复项
 
-	大前提是已经排序过了：
+给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+大前提是已经排序过了：
+
+给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。
+
+由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 k 个元素，那么nums的前 k 个元素应该保存最终结果。
+
+将最终结果插入nums 的前 k 个位置后返回 k 。
+
+不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+
 */
 
-func DoRemove() {
+func main() {
 	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
 	//l := removeDuplicates(nums)
 	l := removeDuplicates1(nums)
@@ -37,7 +48,7 @@ func removeDuplicates1(nums []int) int {
 		if v != preNum {
 			preNum = v
 			nums[count] = v
-			count += 1
+			count++
 		}
 	}
 	return count
@@ -52,19 +63,4 @@ func removeDuplicates2(nums []int) int {
 		}
 	}
 	return nui + 1
-}
-
-/**
-i超出范围会报越界错误 runtime error: slice bounds out of range
-1.nums[:i]		---// 冒号在左边，从左往右保留i个
-2.nums[i:]		---// 冒号在右边，从左往右删除i个元素
-3.nums[:], nums[0:]	等价于复制整个数组元素
-*/
-func TTT() {
-	nums := []int{0, 1, 2, 3, 4, 5}
-	// i表示要删除索引的位置
-	i := 2
-	fmt.Println("nums[:i]:", nums[:i])   //删除索引的前半部分
-	fmt.Println("nums[:i]:", nums[i+1:]) //删除索引的后半部分
-	fmt.Println("nums[i:]:", nums[:], nums[0:])
 }
