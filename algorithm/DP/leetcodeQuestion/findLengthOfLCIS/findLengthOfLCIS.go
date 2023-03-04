@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-/**
+/*
+*
 题目：https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/
 
 最长连续递增序列
@@ -13,24 +14,25 @@ import "fmt"
 
 提示：
 
-1 <= nums.length <= 104
--109 <= nums[i] <= 109
+1 <= nums.length <= 10^4
+-109 <= nums[i] <= 10^9
 
-注意：1.序列必须是连续的，要求递增
+注意：
+.序列必须是连续的，要求递增
 2.一个元素的时候认为自身就是递增序列，那么长度就是1，初始化的时候就是1
-
 
 思路：
 1.dp[i+1] = dp[i] + 1
 2.start->i区间是递增区间，一点出现不递增，start设置到i，重新开始计数
-
 */
 func main() {
 	nums := []int{1, 3, 5, 4, 7}
 	fmt.Println("最长连续递增序列-递归:", findLengthOfLCIS(nums))
 	fmt.Println("最长连续递增序列-贪心:", findLengthOfLCIS1(nums))
+	fmt.Println("最长连续递增序列-双指针:", findLengthOfLCIS2(nums))
 }
 
+// findLengthOfLCIS O(n) O(n)
 func findLengthOfLCIS(nums []int) int {
 	if len(nums) == 0 {
 		return 0
@@ -53,7 +55,7 @@ func findLengthOfLCIS(nums []int) int {
 	return result
 }
 
-// findLengthOfLCIS1 贪心
+// findLengthOfLCIS1 贪心算法，节省空间 O(n) O(1)
 func findLengthOfLCIS1(nums []int) int {
 	var res = 1
 	start := 0 // 断掉递增的地方
@@ -67,6 +69,24 @@ func findLengthOfLCIS1(nums []int) int {
 
 	return res
 }
+
+// findLengthOfLCIS2 双指针 O(n) O(1)
+func findLengthOfLCIS2(nums []int) int {
+	res, left, right, length := 0, 0, 0, len(nums)
+	for right < length {
+		// 如果发现不连续了，移动left到right位置，重新开始计算长度
+		if right > 0 && nums[right] <= nums[right-1] {
+			left = right
+		}
+
+		// 如果left~right连续，保存长度，继续移动 right
+		res = max(res, right-left+1)
+		right++
+	}
+
+	return res
+}
+
 func max(x, y int) int {
 	if x > y {
 		return x

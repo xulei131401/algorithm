@@ -30,18 +30,25 @@ nums2.length == n
 1 <= m + n <= 2000
 -106 <= nums1[i], nums2[i] <= 106
 
+注意：
+1.题目表述不清楚，应该返回的是两个数组合并之后的数组的中位数，而不是分别求两个数组的中位数
+2.中位数公式，奇数：n/2,n为长度；偶数：n/2，(n-1)/2
+
 */
 func main() {
 	nums1 := []int{1, 2}
 	nums2 := []int{3, 4}
-	log.Println("寻找两个正序数组的中位数:", findMedianSortedArrays(nums1, nums2))
+	log.Println("寻找两个正序数组的中位数(归并排序):", findMedianSortedArrays(nums1, nums2))
+	log.Println("寻找两个正序数组的中位数(二分查找):", findMedianSortedArrays1(nums1, nums2))
+	log.Println("寻找两个正序数组的中位数(双指针):", findMedianSortedArrays2(nums1, nums2))
 }
 
-// FindMedianSortedArrays 归并排序
+// FindMedianSortedArrays 归并排序 O(log(m+n)) O(m+n)
 func findMedianSortedArrays(nums1, nums2 []int) float64 {
 	var res []int
-	// 归并过程，因为两个数组都是有序的，所以直接合并
+	// 归并排序过程，因为两个数组都是有序的，所以直接合并
 	m, n := len(nums1), len(nums2)
+	length := m + n
 	l1, l2 := 0, 0
 	for l1 < m && l2 < n {
 		if nums1[l1] < nums2[l2] {
@@ -56,7 +63,6 @@ func findMedianSortedArrays(nums1, nums2 []int) float64 {
 	res = append(res, nums1[l1:]...)
 	res = append(res, nums2[l2:]...)
 
-	length := m + n
 	// 奇数
 	if length%2 == 1 {
 		return float64(res[length/2])
@@ -125,9 +131,9 @@ func findMedianSortedArrays2(nums1 []int, nums2 []int) float64 {
 	l1, l2 := 0, 0
 	left, right := 0, 0 // 代表中位数的2个数
 
-	// 只需要循环左半部分就可以
+	// 因为中位数肯定在左半部分，所以只需要遍历左半部分就可以
+	// i没有实际作用，只用来遍历
 	for i := 0; i <= length/2; i++ {
-		// 每次更新这2个值
 		left = right
 		// 这三个条件缺一不可
 		if l1 < m && (l2 >= n || nums1[l1] < nums2[l2]) {

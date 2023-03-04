@@ -27,7 +27,7 @@ func binarySearchMinBound(nums []int, target int) int {
 	for low <= high {
 		mid := (high-low)>>1 + low
 
-		if nums[mid] == target { // 找到了则收缩右边界
+		if nums[mid] == target { // 因为整体有序并且是找最小边界，找到了则收缩右边界
 			high = mid - 1
 		} else if nums[mid] > target { // 发现mid比目标值大，那么肯定在low~mid之间，往左查找
 			high = mid - 1
@@ -42,7 +42,7 @@ func binarySearchMinBound(nums []int, target int) int {
 	log.Println("high:", high)
 
 	// 因为是最小边界，肯定是返回low
-	// 因为nums[low]可能越界。所以先判断low和len(nums)的关系
+	// 因为low向右移动，可能超出数组长度
 	if low >= len(nums) || nums[low] != target {
 		return -1
 	}
@@ -79,8 +79,8 @@ func binarySearchMaxBound(nums []int, target int) int {
 	//log.Println("low:", low)
 	//log.Println("high:", high)
 
-	// 因为是最小边界，肯定是返回low
-	// 因为nums[high]可能越界。所以先判断low和len(nums)的关系
+	// 因为是最大边界，肯定是返回high
+	// 因为high向左移动可能为负数
 	if high < 0 || nums[high] != target {
 		return -1
 	}
