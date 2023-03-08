@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -15,7 +14,7 @@ import (
 	4. 0~n/2 - 1的位置的数需要重新down,之后的数已经是最后一层的叶子结点了，可用来构建堆
 	5.大小堆切换只需要修改less函数
 	6.只有大堆和小堆
-	7.堆始终是一颗完全二叉树
+	7.堆始终是一颗完全二叉树（左孩子和右孩子哪个大不确定，毕竟不是搜索二叉树）
 	8.优先队列的实现
 
 优先队列(priority queue)
@@ -37,17 +36,23 @@ down
 Remove
 push
 pop
+
+1.push每次添加元素到数组末尾，从数组末尾开始挨个检查构建
+2.pop，每次删除堆顶元素，把数组末尾元素移动到堆顶，重新开始检查
+3.remove
 */
 func main() {
 	arr := []int{20, 30, 90, 40, 70, 110, 60, 10, 100, 50, 80}
 	hDesc := ArrayHeap(arr)
 	hDesc.BuildMaxHeap()
-	fmt.Println("堆排序(降序):", hDesc.Desc())
+	log.Println("堆排序(降序):", hDesc.Desc())
 
 	arr1 := []int{20, 30, 90, 40, 70, 110, 60, 10, 100, 50, 80}
 	hAsc := ArrayHeap(arr1)
 	hAsc.BuildMaxHeap()
-	fmt.Println("堆排序(升序)", hAsc.Asc())
+	log.Println("堆排序(升序)", hAsc.Asc())
+
+	//heap.Fix()
 }
 
 // ArrayHeap 定义一个int类型堆结构
@@ -80,7 +85,7 @@ func (h ArrayHeap) rightChildIndex(i int) int {
 func (h *ArrayHeap) Push(x int) {
 	// 添加到数组末尾
 	*h = append(*h, x)
-	// 调用up方法构建大堆
+	// 每次push新元素，都从堆底部开始往上重新构建，所以此处的索引是固定的
 	h.up(len(*h) - 1)
 }
 
@@ -130,6 +135,7 @@ func (h *ArrayHeap) Remove(i int) (int, bool) {
 }
 
 func (h ArrayHeap) down(i int) {
+	// 总结起来就是从root开始，当前Node与Max(左孩子，右孩子)比较交换顺序，然后逐个向下检查
 	for {
 		l := h.leftChildIndex(i)
 		// 因为完全二叉树的性质，左孩子不能越界，右孩子可以越界（也就是没有值）
@@ -139,7 +145,7 @@ func (h ArrayHeap) down(i int) {
 		}
 
 		// 右节点不能提前判断返回，左节点可以，右节点有些情况是没有的，完全二叉树就是这种特性
-		r := l + 1
+		r := h.rightChildIndex(i)
 		// 寻找左,右孩子最大或者最小的值
 		childMostIndex := l
 		if r < len(h) && h.less(l, r) {

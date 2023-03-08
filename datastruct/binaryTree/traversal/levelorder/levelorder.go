@@ -26,16 +26,17 @@ https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-
 注意：只返回有效的结果，nil不需要存
 */
 
-// TraversalRecursive 利用二叉树的先序遍历（根左右），记录二叉树深度。层次递归遍历，每次进入下层则深度+1，若当前深度大于等于当前res的长度，则给res扩容。因为是先序根左右，符合层序遍历的层级次序。
+// TraversalRecursive DFS 利用二叉树的先序遍历（根左右），记录二叉树深度。层次递归遍历，每次进入下层则深度+1，若当前深度大于等于当前res的长度，则给res扩容。因为是先序根左右，符合层序遍历的层级次序。
 func TraversalRecursive(root *TreeNode) [][]int {
 	var res [][]int
 	var preorder func(node *TreeNode, depth int)
 	preorder = func(node *TreeNode, depth int) {
+		// 优先判空
 		if node == nil {
 			return
 		}
 
-		// 很巧妙，增加位置的时机只在depth == len(res)，并且是在判空之前
+		// 此时上一层已经遍历完毕，需要新的空间存放下一层数据
 		if depth == len(res) {
 			res = append(res, []int{})
 		}

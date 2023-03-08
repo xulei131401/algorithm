@@ -1,5 +1,9 @@
 package postorder
 
+import (
+	. "holy-algorithm/datastruct/binaryTree/treeNode"
+)
+
 /**
 题目：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
 结论：后序遍历类似归并排序的思想，遍历顺序：左子树->右子树->根
@@ -67,6 +71,7 @@ func TraversalStack(root *TreeNode) []int {
 			pre = node
 			node = nil
 		} else {
+			// 因为要先遍历右子树，所以把根节点重新压栈（一会还要往回返），然后向右子树移动
 			// 重新压栈，之后能顺着往上层遍历
 			stack = append(stack, node)
 			node = node.Right
